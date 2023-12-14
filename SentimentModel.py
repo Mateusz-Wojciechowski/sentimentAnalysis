@@ -11,7 +11,7 @@ class SentimentModel(nn.Module):
         self.encoder = EncoderBlock(d_model, d_ff, num_heads, max_seq_len)
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.positional_encoding = PositionalEncoding(d_model, max_seq_len)
-        self.ff_net = nn.Linear(d_model, num_classes)
+        self.ff_net = nn.Linear(d_model, num_classes-1)
 
     def forward(self, x):
         encoder_input = self.positional_encoding(self.embedding(x))
